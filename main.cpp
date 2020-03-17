@@ -364,7 +364,7 @@ extern "C" void* ThreadDumper(void*) {
       }
       fclose(d);
       FILE *ff = fopen("dnsstats.log", "a");
-      fprintf(ff, "%llu %g %g %g %g %g\n", (unsigned long long)(time(NULL)), stat[0], stat[1], stat[2], stat[3], stat[4]);
+      //fprintf(ff, "%llu %g %g %g %g %g\n", (unsigned long long)(time(NULL)), stat[0], stat[1], stat[2], stat[3], stat[4]);
       fclose(ff);
     }
   } while(1);
