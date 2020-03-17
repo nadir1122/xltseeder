@@ -249,7 +249,7 @@ ssize_t static dnshandle(dns_opt_t *opt, const unsigned char *inbuf, size_t insi
   // clear error
   outbuf[3] &= ~15;
   // check qr
-  if (inbuf[2] & 128) { /* printf("Got response?\n"); */ error = 1; goto error; }
+  if (inbuf[2] & 128) {  printf("Got response?\n");  error = 1; goto error; }
   // check opcode
   if (((inbuf[2] & 120) >> 3) != 0) {  printf("Opcode nonzero?\n");  error = 4; goto error; }
   // unset TC
@@ -428,8 +428,8 @@ int dnsserver(dns_opt_t *opt) {
   for (; 1; ++(opt->nRequests))
   {
     ssize_t insize = recvmsg(listenSocket, &msg, 0);
-//    unsigned char *addr = (unsigned char*)&si_other.sin_addr.s_addr;
- //  printf("DNS: Request %llu from %i.%i.%i.%i:%i of %i bytes\n", (unsigned long long)(opt->nRequests), addr[0], addr[1], addr[2], addr[3], ntohs(si_other.sin_port), (int)insize);
+    unsigned char *addr = (unsigned char*)&si_other.sin_addr.s_addr;
+   printf("DNS: Request %llu from %i.%i.%i.%i:%i of %i bytes\n", (unsigned long long)(opt->nRequests), addr[0], addr[1], addr[2], addr[3], ntohs(si_other.sin_port), (int)insize);
     if (insize <= 0)
       continue;
 
